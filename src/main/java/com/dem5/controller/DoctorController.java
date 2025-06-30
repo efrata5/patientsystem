@@ -79,5 +79,18 @@ public class DoctorController {
             return new BaseResponseDTO<>("your doctors inforamation is not updated",HttpStatus.INTERNAL_SERVER_ERROR.value(), null,null);
         }
 }
+@DeleteMapping("/{doctorId}")
+    public BaseResponseDTO<Void>doctorses(@PathVariable Long doctorId){
+        try{
+            Optional<Doctor>existdoctor=doctorService.findById(doctorId);
+            if(existdoctor.isEmpty()){
+                return new BaseResponseDTO<>("your id is not exist",HttpStatus.NOT_FOUND.value(),null,null);
+            }
+            doctorService.deletById(doctorId);
+            return new BaseResponseDTO<>("delted successfully",HttpStatus.OK.value(), null,null);
+        }catch (Exception e){
+            return new BaseResponseDTO<>("not deleted",HttpStatus.INTERNAL_SERVER_ERROR.value(), null,null);
+        }
+}
 }
 

@@ -40,4 +40,8 @@ public class DoctorService {
     public Doctor updatsave(Doctor updatedoctors) {
         return doctorRepository.save(updatedoctors);
     }
+
+    public void deletById(Long doctorId) {
+        doctorRepository.deleteById(doctorId);
+    }
 }
