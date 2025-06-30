@@ -1,7 +1,7 @@
 package com.dem5.controller;
 
-import com.dem5.tod.BaseResponseDTO;
-import com.dem5.entity.Patients;
+import com.dem5.dot.BaseResponseDTO;
+import com.dem5.model.Patients;
 import com.dem5.services.PatientServices;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

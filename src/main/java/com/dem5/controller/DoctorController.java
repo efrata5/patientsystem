@@ -1,8 +1,8 @@
 package com.dem5.controller;
 
-import com.dem5.entity.Doctor;
+import com.dem5.model.Doctor;
 import com.dem5.services.DoctorService;
-import com.dem5.tod.BaseResponseDTO;
+import com.dem5.dot.BaseResponseDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -62,6 +62,22 @@ public class DoctorController {
         }
        }
 
-
+@PutMapping("/{doctorId}")
+    public BaseResponseDTO<Doctor>updateDoctor(@PathVariable Long doctorId,@RequestBody Doctor doctor){
+        try{
+            Optional<Doctor>existdoctor=doctorService.findById(doctorId);
+            if(existdoctor.isEmpty()){
+                return new BaseResponseDTO<>("your is is not exist",HttpStatus.NOT_FOUND.value(),null,null);
+            }
+            Doctor updatedoctors=existdoctor.get();
+            updatedoctors.setDoctorName(doctor.getDoctorName());
+            updatedoctors.setSpecialization(doctor.getSpecialization());
+            updatedoctors.setAvailability(doctor.getAvailability());
+            Doctor saveddoctors=doctorService.updatsave(updatedoctors);
+            return new BaseResponseDTO<>("doctor update",HttpStatus.OK.value(), saveddoctors,null);
+        }catch (Exception e){
+            return new BaseResponseDTO<>("your doctors inforamation is not updated",HttpStatus.INTERNAL_SERVER_ERROR.value(), null,null);
+        }
+}
 }
 

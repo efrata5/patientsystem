@@ -1,6 +1,6 @@
 package com.dem5.services;
 
-import com.dem5.entity.Doctor;
+import com.dem5.model.Doctor;
 import com.dem5.repository.DoctorRepository;
 import org.springframework.stereotype.Service;
 
@@ -33,5 +33,11 @@ public class DoctorService {
 
     public Doctor findBydoctorName(String doctorName) {
         return doctorRepository.findBydoctorName(doctorName);
+    }
+
+
+
+    public Doctor updatsave(Doctor updatedoctors) {
+        return doctorRepository.save(updatedoctors);
     }
 }

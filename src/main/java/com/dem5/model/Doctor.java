@@ -1,4 +1,4 @@
-package com.dem5.entity;
+package com.dem5.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

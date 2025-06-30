@@ -1,4 +1,4 @@
-package com.dem5.tod;
+package com.dem5.dot;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,6 +1,6 @@
 package com.dem5.services;
 
-import com.dem5.entity.Patients;
+import com.dem5.model.Patients;
 import com.dem5.repository.PatientRepository;
 import org.springframework.stereotype.Service;
 
