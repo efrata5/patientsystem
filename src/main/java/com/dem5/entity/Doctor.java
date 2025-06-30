@@ -11,12 +11,13 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table
+@Table(name="doctors")
 
 public class Doctor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String doctorName;
-    private String postions;
+    private String specialization;
+    private String availability;
 }

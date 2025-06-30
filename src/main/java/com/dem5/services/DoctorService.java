@@ -5,6 +5,7 @@ import com.dem5.repository.DoctorRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 
@@ -17,5 +18,15 @@ public class DoctorService {
 
     public List<Doctor> findAll() {
         return doctorRepository.findAll();
+    }
+
+
+
+    public Doctor saved(Doctor doctor) {
+        return doctorRepository.save(doctor);
+    }
+
+    public Optional<Doctor> findById(Long id) {
+        return doctorRepository.findById(id);
     }
 }

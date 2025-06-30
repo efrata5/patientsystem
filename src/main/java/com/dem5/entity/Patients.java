@@ -17,8 +17,11 @@ public class Patients {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     private Long id;
+    @Column(nullable = false)
     private String patientName;
+    @Column(nullable = false)
     private int age;
+    @Column(nullable = false)
     private String address;
 
 }
