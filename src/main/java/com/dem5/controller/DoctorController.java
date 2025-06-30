@@ -48,5 +48,20 @@ public class DoctorController {
         }catch (Exception e){
             return new BaseResponseDTO<>("a doctor id is not here",HttpStatus.INTERNAL_SERVER_ERROR.value(), null, e.getMessage());
         }
+
+
+       }
+       @GetMapping("/filter")
+    public BaseResponseDTO<Doctor>doctorse(@RequestParam String doctorName){
+        try{
+
+            Doctor doctorse1=doctorService.findBydoctorName(doctorName);
+            return new BaseResponseDTO<>("here is a doctor",HttpStatus.OK.value(),doctorse1,null );
+        }catch (Exception e){
+            return new BaseResponseDTO<>("the doctor name is not exist",HttpStatus.INTERNAL_SERVER_ERROR.value(),null, e.getMessage());
         }
+       }
+
+
 }
+
