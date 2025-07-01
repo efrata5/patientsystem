@@ -2,6 +2,8 @@ package com.dem5.services;
 
 import com.dem5.model.Patients;
 import com.dem5.repository.PatientRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -40,5 +42,9 @@ public class PatientServices {
 
     public void deleteById(Long id) {
         patientRepository.deleteById(id);
+    }
+
+    public Page<Patients> paginations(Pageable pageable) {
+        return patientRepository.findAll(pageable);
     }
 }

@@ -3,6 +3,9 @@ package com.dem5.controller;
 import com.dem5.dot.BaseResponseDTO;
 import com.dem5.model.Patients;
 import com.dem5.services.PatientServices;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -96,6 +99,18 @@ public class PatientController {
         }catch (Exception e){
             return new BaseResponseDTO<>("not delted",HttpStatus.INTERNAL_SERVER_ERROR.value(),null,e.getMessage());
         }
+        }
+        @GetMapping("/paginations")
+    public BaseResponseDTO<Page<Patients>>patients(@RequestParam(defaultValue = "0")int page, @RequestParam(defaultValue ="5" )int size){
+        try{
+            Pageable pageable= PageRequest.of(page, size);
+            Page<Patients>paginations=patientServices.paginations(pageable);
+            return new BaseResponseDTO<>("here are paginations ",HttpStatus.OK.value(), paginations,null);
+        }catch (Exception e){
+            return new BaseResponseDTO<>("there is no any paginations",HttpStatus.INTERNAL_SERVER_ERROR.value(),null, e.getMessage());
+        }
+
+
         }
 
 
